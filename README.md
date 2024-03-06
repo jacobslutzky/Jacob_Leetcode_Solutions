@@ -1,7 +1,9 @@
 # Jacob_Leetcode_Solutions
-After completing 250+ questions I wanted a way to re-solve some of my previously completed problems to strengthen my knowledge, while also sharing my solutions with others
+After completing over 250 questions, I've decided to create this GitHub to keep track of my recently completed problems, including problems that I am revisiting to reinforce my understanding and measure my progress.
 
-This is a way for me to keep track of the questions that I have recently solved and share my solutions while I complete them
+Additionally, I want to share my solutions with others to contribute to their learning process while getting feedback on my solutions.
+
+If you need any clarification on one of my solutions or have suggestions for improvements I can make feel free to open an issue or submit a pull request!
 
 My profile:
 https://leetcode.com/jslutzky/
