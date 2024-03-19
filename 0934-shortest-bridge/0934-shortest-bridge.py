@@ -3,19 +3,16 @@ class Solution:
         n = len(grid)
         first_x, first_y = -1, -1
         
-        # Find any land cell, and we treat it as a cell of island A.
         for i in range(n):
             for j in range(n):
                 if grid[i][j] == 1:
                     first_x, first_y = i, j
                     break
         
-        # bfsQueue for BFS on land cells of island A; secondBfsQueue for BFS on water cells.
         bfs_queue = [(first_x, first_y)]
         second_bfs_queue = [(first_x, first_y)]
         grid[first_x][first_y] = 2
         
-        # BFS for all land cells of island A and add them to second_bfs_queue.
         while bfs_queue:
             new_bfs = []
             for x, y in bfs_queue:
@@ -38,8 +35,5 @@ class Solution:
                             new_bfs.append((cur_x, cur_y))
                             grid[cur_x][cur_y] = -1
 
-            # Once we finish one round without finding land cells of island B, we will
-            # start the next round on all water cells that are 1 cell further away from
-            # island A and increment the distance by 1.
             second_bfs_queue = new_bfs
             distance += 1
