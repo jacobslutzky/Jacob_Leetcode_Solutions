@@ -6,33 +6,25 @@
 #         self.right = right
 class Solution:
     def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
-        
-        visited = set()
-        def recurse(node):
+        self.max_length = 0
+        def dfs(node):
             if not node:
                 return 0
-            curr_length = 0
-            if node not in visited:
-                curr_length = dfs(node)[1]
-            max_left_length = recurse(node.left)
-            max_right_length = recurse(node.right)
-            
-            return max(max_left_length, max_right_length, curr_length)
-        
-        def dfs(node):
-            visited.add(node)
             if not node.left and not node.right:
-                return 1,0
+                return 1
+            left_count = 0
+            right_count = 0
             if node.left and node.left.val == node.val:
-                left_count,max_left_count = dfs(node.left)
+                left_count = dfs(node.left)
             else:
-                left_count = 0
-                max_left_count=0
+                dfs(node.left)
             if node.right and node.right.val == node.val:
-                right_count,max_right_count = dfs(node.right)
+                right_count = dfs(node.right)
             else:
-                right_count = 0
-                max_right_count =0
+                dfs(node.right)
+    
 
-            return max(left_count,right_count)+1, max(left_count+right_count,max_left_count,max_right_count)
-        return recurse(root)
+            self.max_length = max(self.max_length, left_count+right_count)
+            return max(left_count,right_count)+1
+        dfs(root)
+        return self.max_length
