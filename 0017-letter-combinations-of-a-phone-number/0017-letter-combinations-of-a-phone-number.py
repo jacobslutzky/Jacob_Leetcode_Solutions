@@ -11,15 +11,13 @@ class Solution:
             "9": ["w", "x", "y", "z"],
         }
         output = []
-        def get_combinations(digits, curr):
+        
+        def get_combinations(curr, digits):
             if not digits:
                 if curr:
                     output.append(curr)
                 return
-            
             for char in d[digits[0]]:
-                get_combinations(digits[1:], curr + char)
-            
-        get_combinations(digits, "")
+                get_combinations(curr + char, digits[1:])
+        get_combinations("", digits)
         return output
-        
