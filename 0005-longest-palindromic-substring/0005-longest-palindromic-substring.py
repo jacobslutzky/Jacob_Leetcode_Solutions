@@ -3,21 +3,17 @@ class Solution:
         curr_max = 0
         n = len(s)
         
-        dp = [[False] * n for _ in range(n)]
-
-        for i in range(n):
-            dp[i][i] = True
-            curr_string = s[i]
-        
-        for start in range(n-1, -1, -1):
-            for end in range(start+1, n):
-                if s[start] == s[end]:
-                    if end-start == 1 or dp[start+1][end-1]:
-                        dp[start][end] = True
-                        if end-start+1 > curr_max:
-                            curr_max = end-start+1
-                            curr_string = s[start:end+1]
-        return curr_string
+        dp = [[False if i < j else True for j in range(n)] for i in range(n)]
+        max_len = 0
+        max_str = s[0]
+        for size in range(1,len(s)):
+            for i in range(len(s)-size):
+                if dp[i+1][i+size-1] and s[i] == s[i+size]:
+                    if size > max_len:
+                        max_len = size
+                        max_str = s[i:i+size+1]
+                    dp[i][i+size] = True
+        return max_str
 
         
 
