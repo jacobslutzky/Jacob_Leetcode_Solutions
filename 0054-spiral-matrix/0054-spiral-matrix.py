@@ -32,9 +32,5 @@ class Solution:
             for j in range(bottom-1, top, -1):
                 output.append(matrix[j][left])
             top += 1
-
-
-            if top == bottom:
-                break
            
         return output
